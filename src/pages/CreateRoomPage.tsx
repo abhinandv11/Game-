@@ -49,11 +49,11 @@ export default function CreateRoomPage() {
   return (
     <div className="page safe-bottom">
       <div className="text-center mt-md mb-lg">
-        <h1 className="text-display mb-xs" style={{ fontSize: '1.75rem' }}>
+        <h1 className="text-display mb-xs">
           Create Room
         </h1>
         <p className="text-sm text-muted">
-          Choose your rounds and invite a friend
+          Choose the match length and invite a friend
         </p>
       </div>
 

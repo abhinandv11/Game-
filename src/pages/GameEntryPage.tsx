@@ -11,7 +11,7 @@ export default function GameEntryPage() {
     return (
       <div className="page page-centered text-center">
         <h2>Game not found</h2>
-        <button className="btn btn-primary mt-md" onClick={() => navigate('/')}>
+        <button type="button" className="btn btn-primary mt-md" onClick={() => navigate('/')}>
           Back to Game കളിക്കാം
         </button>
       </div>
@@ -21,12 +21,12 @@ export default function GameEntryPage() {
   return (
     <div className="page safe-bottom">
       <div className="text-center mt-md mb-lg">
-        <div className="game-emojis justify-center mb-sm" style={{ fontSize: '2.5rem' }}>
+        <div className="game-emojis justify-center mb-sm">
           {game.emoji.map((e, i) => (
             <span key={i}>{e}</span>
           ))}
         </div>
-        <h1 className="text-display mb-xs" style={{ fontSize: '1.75rem' }}>
+        <h1 className="text-display mb-xs">
           {game.name}
         </h1>
         <p className="text-sm text-muted">
@@ -57,16 +57,16 @@ export default function GameEntryPage() {
       </div>
 
       {/* Rules Overview */}
-      <div className="card" style={{ background: 'var(--color-surface-2)' }}>
-        <h3 className="text-xs uppercase text-muted font-bold mb-sm" style={{ letterSpacing: '0.08em' }}>
+      <div className="card section-panel">
+        <h3 className="section-panel-title">
           How It Works
         </h3>
-        <ul className="text-xs text-muted flex flex-col gap-xs" style={{ lineHeight: '1.6' }}>
+        <ul className="rules-list">
           <li>🪨 <strong>Stone</strong> beats Scissors & Pencil</li>
           <li>✂️ <strong>Scissors</strong> beats Paper & Pencil</li>
           <li>✏️ <strong>Pencil</strong> beats Paper</li>
           <li>📄 <strong>Paper</strong> beats Stone</li>
-          <li>⚖️ Identical moves or other matchups result in a <strong>Draw</strong></li>
+          <li>Identical moves or other matchups result in a <strong>Draw</strong></li>
         </ul>
       </div>
     </div>

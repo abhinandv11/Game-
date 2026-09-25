@@ -52,7 +52,6 @@ export default function RoomLobbyPage() {
       setStartError(res.error);
       setStarting(false);
     }
-    // Room status will become 'playing' in realtime and trigger navigation
   };
 
   const handleLeave = async () => {
@@ -79,6 +78,7 @@ export default function RoomLobbyPage() {
           onRetry={reload}
         />
         <button
+          type="button"
           className="btn btn-secondary mt-md"
           onClick={() => {
             clearPlayerSession();
@@ -101,7 +101,6 @@ export default function RoomLobbyPage() {
           type="button"
           className="btn btn-ghost btn-sm"
           onClick={() => setShowLeaveModal(true)}
-          style={{ color: '#f87171' }}
         >
           Leave Game
         </button>
@@ -122,7 +121,7 @@ export default function RoomLobbyPage() {
             label={player1?.id === currentSessionPlayerId ? 'You (Host)' : 'Host'}
           />
 
-          <div className="vs-badge">VS</div>
+          <div className="vs-badge">vs</div>
 
           <PlayerCard
             player={player2}
@@ -133,16 +132,16 @@ export default function RoomLobbyPage() {
       </div>
 
       {/* Action / Waiting State */}
-      <div className="card text-center" style={{ background: 'var(--color-surface-2)' }}>
+      <div className="card text-center panel-subtle">
         {!bothConnected ? (
-          <div className="waiting-indicator py-sm">
-            <span className="dot dot-yellow" />
+          <div className="waiting-indicator">
+            <span className="dot dot-inactive" />
             <span>Waiting for your friend to join...</span>
           </div>
         ) : isHost ? (
           <div className="flex flex-col gap-sm">
             <p className="text-sm text-muted">
-              Both players connected! Ready to begin.
+              Both players connected. Ready to start.
             </p>
             {startError && <p className="form-error justify-center">{startError}</p>}
             <button
@@ -155,9 +154,9 @@ export default function RoomLobbyPage() {
             </button>
           </div>
         ) : (
-          <div className="waiting-indicator py-sm">
-            <span className="dot dot-green" />
-            <span>Connected! Waiting for host to start the game...</span>
+          <div className="waiting-indicator">
+            <span className="dot dot-active" />
+            <span>Connected. Waiting for host to start the game...</span>
           </div>
         )}
       </div>

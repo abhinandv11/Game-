@@ -102,24 +102,22 @@ export default function SPPSGame({
   return (
     <div className="w-full flex flex-col gap-lg">
       <div className="text-center">
-        <p className="text-sm uppercase text-muted mb-xs font-bold" style={{ letterSpacing: '0.12em' }}>
+        <p className="form-label mb-xs">
           Choose Your Move
         </p>
         {myLocked ? (
           <div className="waiting-indicator mt-sm">
-            <span className="dot dot-green" />
-            <span style={{ color: 'var(--color-success)', fontWeight: 600 }}>
-              Choice locked!
-            </span>{' '}
-            {!opponentLocked ? (
-              <span className="text-muted">Waiting for {opponentName}...</span>
-            ) : (
-              <span className="text-muted">Calculating result...</span>
-            )}
+            <span className="dot dot-active" />
+            <span className="choice-locked-label">
+              Choice locked
+            </span>
+            <span className="text-muted">
+              {!opponentLocked ? `— waiting for ${opponentName}` : '— calculating result'}
+            </span>
           </div>
         ) : (
           <p className="text-xs text-muted">
-            Tap an option and confirm before your opponent
+            Select one and confirm your choice
           </p>
         )}
       </div>
@@ -141,16 +139,18 @@ export default function SPPSGame({
       </div>
 
       {/* Opponent Status Indicator */}
-      <div className="card" style={{ padding: '12px 16px', background: 'var(--color-surface-2)' }}>
+      <div className="card opponent-status-card">
         <div className="flex items-center justify-between text-sm">
-          <span className="text-muted">{opponentName}'s status:</span>
+          <span className="text-muted">{opponentName}'s status</span>
           {opponentLocked ? (
-            <span className="flex items-center gap-sm" style={{ color: 'var(--color-primary-light)', fontWeight: 600 }}>
-              <span className="dot dot-green" /> Choice locked
+            <span className="flex items-center gap-sm font-bold">
+              <span className="dot dot-active" />
+              <span>Choice locked</span>
             </span>
           ) : (
             <span className="flex items-center gap-sm text-muted">
-              <span className="dot dot-yellow" /> Thinking...
+              <span className="dot dot-inactive" />
+              <span>Thinking...</span>
             </span>
           )}
         </div>

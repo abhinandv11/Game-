@@ -97,37 +97,34 @@ export default function FinalResultPage() {
 
   return (
     <div className="page safe-bottom">
-      {/* Trophy / Header */}
+      {/* Header */}
       <div className="text-center mt-md mb-lg">
-        <div style={{ fontSize: '3.5rem', lineHeight: 1 }} role="img" aria-label="Trophy">
-          🏆
-        </div>
-        <p className="text-xs uppercase text-muted font-bold mt-sm" style={{ letterSpacing: '0.12em' }}>
-          Game Over
+        <p className="final-result-tag">
+          Match Complete
         </p>
-        <h1 className="text-brand mt-xs" style={{ fontSize: '2rem' }}>
-          {isDraw ? "It's a Draw!" : `${winnerName} Wins!`}
+        <h1 className="final-result-title">
+          {isDraw ? "It's a Draw" : `${winnerName} Wins`}
         </h1>
       </div>
 
       {/* Final Score Card */}
       <div className="card mb-lg text-center">
-        <p className="text-xs uppercase text-muted font-bold mb-md" style={{ letterSpacing: '0.08em' }}>
+        <p className="form-label mb-md">
           Final Score
         </p>
         <div className="flex justify-center items-center gap-xl mb-sm">
           <div className="flex flex-col items-center">
             <span className="text-sm font-bold text-muted">{currentPlayer?.player_name}</span>
-            <span className="text-display" style={{ fontSize: '3rem', color: myScore > oppScore ? 'var(--color-success)' : 'inherit' }}>
+            <span className="score-value final-score-num">
               {myScore}
             </span>
           </div>
 
-          <span className="score-divider" style={{ fontSize: '2rem' }}>—</span>
+          <span className="score-divider">—</span>
 
           <div className="flex flex-col items-center">
             <span className="text-sm font-bold text-muted">{oppName}</span>
-            <span className="text-display" style={{ fontSize: '3rem', color: oppScore > myScore ? 'var(--color-success)' : 'inherit' }}>
+            <span className="score-value final-score-num">
               {oppScore}
             </span>
           </div>
@@ -137,7 +134,7 @@ export default function FinalResultPage() {
       {/* Round Breakdown */}
       <div className="mb-lg">
         <div className="section-divider mb-md">
-          <span>Round Results</span>
+          <span>Round Breakdown</span>
         </div>
 
         <div className="round-history">
@@ -148,7 +145,7 @@ export default function FinalResultPage() {
               (!isPlayer1 && summary.result === 'player2');
 
             const pillClass = isRoundDraw ? 'draw' : didIWin ? 'win' : 'loss';
-            const pillText = isRoundDraw ? 'Draw' : didIWin ? 'Win' : 'Loss';
+            const pillText = isRoundDraw ? 'Draw' : didIWin ? 'Won' : 'Lost';
 
             return (
               <div key={summary.roundNumber} className="round-history-item">
@@ -167,7 +164,7 @@ export default function FinalResultPage() {
       {/* Rematch & Navigation Actions */}
       <div className="flex flex-col gap-sm">
         {rematchRequested ? (
-          <div className="card text-center py-md" style={{ background: 'var(--color-surface-2)' }}>
+          <div className="card text-center py-md panel-subtle">
             <p className="text-sm text-muted waiting-indicator justify-center">
               Waiting for {oppName} to accept rematch...
               <span className="waiting-dots">

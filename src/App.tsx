@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 import AppLayout from './components/AppLayout';
 import HomePage from './pages/HomePage';
 import GameEntryPage from './pages/GameEntryPage';
@@ -10,18 +11,20 @@ import FinalResultPage from './pages/FinalResultPage';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<AppLayout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/game/:gameId" element={<GameEntryPage />} />
-          <Route path="/game/:gameId/create" element={<CreateRoomPage />} />
-          <Route path="/game/:gameId/join" element={<JoinRoomPage />} />
-          <Route path="/room/:roomId/lobby" element={<RoomLobbyPage />} />
-          <Route path="/room/:roomId/play" element={<GameRoomPage />} />
-          <Route path="/room/:roomId/result" element={<FinalResultPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/game/:gameId" element={<GameEntryPage />} />
+            <Route path="/game/:gameId/create" element={<CreateRoomPage />} />
+            <Route path="/game/:gameId/join" element={<JoinRoomPage />} />
+            <Route path="/room/:roomId/lobby" element={<RoomLobbyPage />} />
+            <Route path="/room/:roomId/play" element={<GameRoomPage />} />
+            <Route path="/room/:roomId/result" element={<FinalResultPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

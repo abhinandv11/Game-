@@ -53,7 +53,7 @@ export default function JoinRoomPage() {
   return (
     <div className="page safe-bottom">
       <div className="text-center mt-md mb-lg">
-        <h1 className="text-display mb-xs" style={{ fontSize: '1.75rem' }}>
+        <h1 className="text-display mb-xs">
           Join a Room
         </h1>
         <p className="text-sm text-muted">
@@ -91,7 +91,7 @@ export default function JoinRoomPage() {
           <input
             id="join-code"
             type="text"
-            className="form-input"
+            className="form-input room-code-input"
             placeholder="e.g. A7K2P9"
             value={roomCode}
             onChange={(e) => {
@@ -99,12 +99,6 @@ export default function JoinRoomPage() {
               if (error) setError(null);
             }}
             maxLength={6}
-            style={{
-              textTransform: 'uppercase',
-              letterSpacing: '0.15em',
-              fontWeight: 700,
-              fontSize: '1.125rem',
-            }}
             disabled={submitting}
           />
         </div>

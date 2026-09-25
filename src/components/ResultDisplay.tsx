@@ -26,13 +26,12 @@ export default function ResultDisplay({
   myScore,
   opponentScore,
 }: ResultDisplayProps) {
-  // Determine if YOU won, lost, or drew
   const didIWin =
     (isPlayer1 && result === 'player1') || (!isPlayer1 && result === 'player2');
   const isDraw = result === 'draw';
 
   const statusClass = isDraw ? 'draw' : didIWin ? 'win' : 'loss';
-  const headline = isDraw ? 'DRAW!' : didIWin ? 'YOU WIN!' : 'ROUND LOST';
+  const headline = isDraw ? 'Round Draw' : didIWin ? 'You Won The Round' : 'Round Lost';
 
   const myMeta = CHOICE_META[myChoice];
   const oppMeta = CHOICE_META[opponentChoice];
@@ -54,28 +53,28 @@ export default function ResultDisplay({
 
       <div className="reveal-grid mb-lg">
         <div className={`reveal-card ${didIWin ? 'winner' : ''}`}>
-          <span className="reveal-label">YOU ({myName})</span>
+          <span className="reveal-label">You ({myName})</span>
           <span className="reveal-emoji" role="img" aria-label={myMeta?.label}>
-            {myMeta?.emoji || '❓'}
+            {myMeta?.emoji || '-'}
           </span>
           <span className="reveal-choice">{myMeta?.label || 'Choice'}</span>
         </div>
 
-        <div className="vs-badge">VS</div>
+        <div className="vs-badge">vs</div>
 
         <div className={`reveal-card ${!didIWin && !isDraw ? 'winner' : ''}`}>
           <span className="reveal-label">{opponentName}</span>
           <span className="reveal-emoji" role="img" aria-label={oppMeta?.label}>
-            {oppMeta?.emoji || '❓'}
+            {oppMeta?.emoji || '-'}
           </span>
           <span className="reveal-choice">{oppMeta?.label || 'Choice'}</span>
         </div>
       </div>
 
-      <div className="flex justify-center items-center gap-md text-sm text-muted">
-        <span>Score:</span>
-        <strong className="text-display" style={{ color: 'var(--color-text)', fontSize: '1.25rem' }}>
-          YOU {myScore} — {opponentScore} {opponentName}
+      <div className="result-score-summary">
+        <span className="text-muted">Score:</span>
+        <strong className="result-score-text">
+          {myName} {myScore} — {opponentScore} {opponentName}
         </strong>
       </div>
     </div>

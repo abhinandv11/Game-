@@ -6,18 +6,14 @@ export default function HomePage() {
   return (
     <div className="page safe-bottom">
       {!isSupabaseConfigured && (
-        <div
-          className="card mb-lg"
-          style={{
-            borderColor: 'var(--color-warning)',
-            background: 'rgba(251, 191, 36, 0.08)',
-          }}
-        >
+        <div className="config-banner mb-lg" role="alert">
           <div className="flex items-center gap-sm mb-xs">
-            <span role="img" aria-label="Notice">⚠️</span>
-            <strong style={{ color: 'var(--color-warning)', fontSize: '0.9375rem' }}>
-              Supabase Configuration Required
-            </strong>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            <strong>Supabase Configuration Required</strong>
           </div>
           <p className="text-sm text-muted">
             Add your <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> to <code>.env</code> and run the provided SQL schema in Supabase to enable live multiplayer.
@@ -26,38 +22,12 @@ export default function HomePage() {
       )}
 
       {/* Hero Section */}
-      <section className="text-center mt-lg mb-xl">
-        <div className="mb-sm flex justify-center">
-          <span
-            style={{
-              display: 'inline-flex',
-              padding: '6px 14px',
-              borderRadius: 'var(--radius-full)',
-              background: 'rgba(124, 108, 252, 0.12)',
-              border: '1px solid rgba(124, 108, 252, 0.25)',
-              color: 'var(--color-primary-light)',
-              fontSize: '0.75rem',
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Multiplayer Platform
-          </span>
-        </div>
-        <h1
-          className="text-brand mb-xs"
-          style={{
-            fontSize: 'clamp(2rem, 7vw, 2.75rem)',
-            background: 'linear-gradient(135deg, #ffffff 40%, #b8b3ff 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
-        >
+      <section className="hero-section text-center">
+        <h1 className="hero-title">
           Game കളിക്കാം
         </h1>
-        <p className="text-muted" style={{ fontSize: '1rem', maxWidth: '340px', margin: '0 auto' }}>
-          Play simple games with your friends.
+        <p className="hero-subtitle">
+          Minimal multiplayer games for two players. Fast, synchronized, and distraction-free.
         </p>
       </section>
 
@@ -75,8 +45,8 @@ export default function HomePage() {
       </section>
 
       {/* Footer Branding */}
-      <footer className="text-center mt-2xl text-xs text-muted">
-        <p>Game കളിക്കാം • Real-time Online Multiplayer</p>
+      <footer className="footer-bar text-center">
+        <p>Game കളിക്കാം — Real-time Multiplayer</p>
       </footer>
     </div>
   );

@@ -77,6 +77,7 @@ export default function GameRoomPage() {
       <div className="page page-centered">
         <ErrorMessage message={roomError || 'Room session not found.'} />
         <button
+          type="button"
           className="btn btn-secondary mt-md"
           onClick={() => {
             clearPlayerSession();
@@ -101,14 +102,13 @@ export default function GameRoomPage() {
     <div className="page safe-bottom">
       {/* Top Bar */}
       <div className="flex justify-between items-center mb-md">
-        <span className="text-xs uppercase text-muted font-bold" style={{ letterSpacing: '0.08em' }}>
+        <span className="game-type-badge">
           Stone • Paper • Pencil • Scissors
         </span>
         <button
           type="button"
           className="btn btn-ghost btn-sm"
           onClick={() => setShowLeaveModal(true)}
-          style={{ color: '#f87171' }}
           aria-label="Leave current game"
         >
           Leave
@@ -117,16 +117,9 @@ export default function GameRoomPage() {
 
       {/* Opponent disconnected warning */}
       {opponent && !opponent.connected && (
-        <div
-          className="card mb-md text-center"
-          style={{
-            background: 'rgba(251, 191, 36, 0.1)',
-            borderColor: 'rgba(251, 191, 36, 0.3)',
-            padding: '10px 14px',
-          }}
-        >
-          <p className="text-xs" style={{ color: 'var(--color-warning)' }}>
-            ⚠️ {opponent.player_name} lost connection. Reconnecting...
+        <div className="notice-box mb-md text-center">
+          <p className="text-xs">
+            {opponent.player_name} lost connection. Reconnecting...
           </p>
         </div>
       )}
